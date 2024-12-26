@@ -7,5 +7,6 @@ export default defineConfig({
   manifest: {
     name: 'Git Ingest - Turn any Git repo to a LLM-friendly prompt',
     description: 'Turn any Git repository into a prompt-friendly text ingest for LLMs. By replacing hub with ingest in any github url to access the corresponding digest, a prompt-friendly extract of a codebase.',
+    permissions: ['storage'],
   }
 });
