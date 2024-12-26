@@ -1,9 +1,15 @@
 {
-  "name": "wxt-react-starter",
-  "description": "manifest.json description",
+  "name": "gitingest-extension",
+  "description": "open git ingest fastly",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0",
   "type": "module",
+  "author": {
+    "name": "甜檸Cirtron (lcandy2)",
+    "email": "vanilla#citrons.cc",
+    "url": "https://github.com/lcandy2"
+  },
+  "homepage": "https://github.com/lcandy2/gitingest-extension",
   "scripts": {
     "dev": "wxt",
     "dev:firefox": "wxt -b firefox",
