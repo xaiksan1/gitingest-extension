@@ -28,7 +28,8 @@ This extension is part of the GitIngest ecosystem. See [GitIngest.com](https://g
 - [TailwindCSS](https://tailwindcss.com/)
 
 ## 🔒 Privacy Policy
-[Privacy Policy (for the extension only)](PRIVACY.md)
+> This privacy policy is for the extension only.
+[Privacy Policy (26 December 2024)](PRIVACY.md)
 
 ## 🔧 Development
 
