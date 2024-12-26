@@ -6,8 +6,10 @@ This is useful for feeding a codebase into any LLM.](https://github.com/user-att
 Turn any Git repository into a prompt-friendly text ingest for LLMs.
 
 <a href="https://chromewebstore.google.com/detail/adfjahbijlkjfoicpjkhjicpjpjfaood" target="_blank" title="Get GitIngest Extension from Chrome Web Store"><img height="48" src="https://github.com/user-attachments/assets/20a6e44b-fd46-4e6c-8ea6-aad436035753" alt="Available in the Chrome Web Store" /></a>
-<a href="https://addons.mozilla.org/firefox/addon/gitingest/" target="_blank" title="Get GitIngest Extension from Firefox Add-ons"><img height="48" src="https://github.com/user-attachments/assets/c0e99e6b-97cf-4af2-9737-099db7d3538b" alt="Get The Add-on for Firefox" /></a>
-<a href="https://microsoftedge.microsoft.com/addons/detail/nfobhllgcekbmpifkjlopfdfdmljmipf" target="_blank" title="Get GitIngest Extension from Firefox Add-ons"><img height="48" src="https://github.com/user-attachments/assets/204157eb-4cae-4c0e-b2cb-db514419fd9e" alt="Get from the Edge Add-ons" /></a>
+<!-- <a href="https://addons.mozilla.org/firefox/addon/gitingest/" target="_blank" title="Get GitIngest Extension from Firefox Add-ons"><img height="48" src="https://github.com/user-attachments/assets/c0e99e6b-97cf-4af2-9737-099db7d3538b" alt="Get The Add-on for Firefox" /></a>
+<a href="https://microsoftedge.microsoft.com/addons/detail/nfobhllgcekbmpifkjlopfdfdmljmipf" target="_blank" title="Get GitIngest Extension from Firefox Add-ons"><img height="48" src="https://github.com/user-attachments/assets/204157eb-4cae-4c0e-b2cb-db514419fd9e" alt="Get from the Edge Add-ons" /></a> -->
+
+<sup>Firefox and Microsoft Edge is under reviewing.</sup>
 
 This extension is part of the GitIngest ecosystem. See [GitIngest.com](https://gitingest.com) or [cyclotruc/gitingest](https://github.com/cyclotruc/gitingest) for more information.
 
@@ -22,6 +24,13 @@ This extension is part of the GitIngest ecosystem. See [GitIngest.com](https://g
   - Token count  
 - 🔒 Privacy-first, zero data collection (for the extension itself)
 - 🤖 Open source, community-driven
+
+## 📸 Screenshots
+
+https://github.com/user-attachments/assets/fb831553-c55a-43e7-af91-7636e9084ae8
+<!-- ![Screenshot 0](https://github.com/user-attachments/assets/cfe4b346-2c02-4aef-895d-39847938423f) -->
+| ![Screenshot 1](https://github.com/user-attachments/assets/3a9ce50f-1cb1-4a02-9b45-ed0109c3e9f5) | ![Screenshot 2](https://github.com/user-attachments/assets/e723c81f-5b24-41c9-82c0-4b93293427e8) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
 
 ## 🛠️ Using
 - [WXT](https://github.com/wxt-dev/wxt)
