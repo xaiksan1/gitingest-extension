@@ -2,7 +2,7 @@
   "name": "gitingest-extension",
   "description": "open git ingest fastly",
   "private": true,
-  "version": "1.0",
+  "version": "1.1",
   "type": "module",
   "author": {
     "name": "甜檸Cirtron (lcandy2)",
