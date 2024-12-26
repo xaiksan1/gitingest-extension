@@ -13,8 +13,10 @@ export default defineContentScript({
       
       if (isRepoPage()) {
         if (!existingButton) {
-          const button = createGitIngestButton();
-          appendGitIngestButton(button);
+          // Handle async operation without changing function signature
+          createGitIngestButton()
+            .then(button => appendGitIngestButton(button))
+            .catch(console.error);
         }
       } else {
         existingButton?.remove();

@@ -68,9 +68,9 @@ function App() {
           <div className="mt-6 text-sm text-green-600 font-medium text-center relative z-20">
             Settings saved!
             <br />
-            <span className="ml-2 font-normal text-gray-600 text-xs">
+            {/* <span className="ml-2 font-normal text-gray-600 text-xs">
               You may need to refresh the page.
-            </span>
+            </span> */}
           </div>
         )}
       </div>

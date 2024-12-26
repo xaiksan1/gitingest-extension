@@ -1,5 +1,7 @@
 // Create and return the GitIngest button element
-export function createGitIngestButton(): HTMLLIElement {
+import { storage } from 'wxt/storage';
+
+export async function createGitIngestButton(): Promise<HTMLLIElement> {
   // Add custom styles
   const style = document.createElement('style');
   style.textContent = `
@@ -28,7 +30,10 @@ export function createGitIngestButton(): HTMLLIElement {
   // Create link with GitHub's button style
   const link = document.createElement('a');
   link.className = 'btn-sm btn';
-  link.href = window.location.href.replace('github.com', 'gitingest.com');
+
+  // Get custom base URL from storage, default to gitingest.com if not set
+  const baseUrl = await storage.getItem<string>('sync:baseUrl') || 'gitingest.com';
+  link.href = window.location.href.replace('github.com', baseUrl);
   
   // Create spans for different screen sizes
   const linkContent = `
@@ -56,3 +61,16 @@ export function appendGitIngestButton(button: HTMLElement) {
     }
   }
 }
+
+// Add storage change listener to update button URL when settings change
+storage.watch('sync:baseUrl', () => {
+  const button = document.getElementById('git-ingest-button');
+  if (button) {
+    const link = button.querySelector('a');
+    if (link) {
+      createGitIngestButton().then(newButton => {
+        link.href = newButton.querySelector('a')?.href || link.href;
+      });
+    }
+  }
+});
