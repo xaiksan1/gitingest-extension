@@ -8,15 +8,24 @@ export default defineContentScript({
     const isRepoPage = () => window.location.pathname.match(/^\/[^/]+\/[^/]+/);
 
     // Function to manage button visibility
+    let isCreatingButton = false;  // Flag to prevent concurrent button creation
+
     const manageButton = () => {
       const existingButton = document.getElementById('git-ingest-button');
       
       if (isRepoPage()) {
-        if (!existingButton) {
+        if (!existingButton && !isCreatingButton) {
+          isCreatingButton = true;
           // Handle async operation without changing function signature
           createGitIngestButton()
-            .then(button => appendGitIngestButton(button))
-            .catch(console.error);
+            .then(button => {
+              appendGitIngestButton(button);
+              isCreatingButton = false;
+            })
+            .catch(error => {
+              console.error(error);
+              isCreatingButton = false;
+            });
         }
       } else {
         existingButton?.remove();
