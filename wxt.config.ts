@@ -1,4 +1,5 @@
 import { defineConfig } from 'wxt';
+import type { ConfigEnv } from "wxt";
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
