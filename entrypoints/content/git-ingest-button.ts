@@ -30,6 +30,8 @@ export async function createGitIngestButton(): Promise<HTMLLIElement> {
   // Create link with GitHub's button style
   const link = document.createElement('a');
   link.className = 'btn-sm btn';
+  link.id = 'gitingest_btn';
+  link.setAttribute('aria-describedby', 'gitingest_tooltip');
 
   // Get custom base URL and window preference from storage
   const [baseUrl, openInNewWindow] = await Promise.all([
@@ -45,6 +47,10 @@ export async function createGitIngestButton(): Promise<HTMLLIElement> {
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
   }
+
+  const tooltipText = openInNewWindow 
+    ? 'Turn this to a LLM-friendly prompt in a new tab'
+    : 'Turn this to a LLM-friendly prompt';
   
   // Create spans for different screen sizes
   const linkContent = `
@@ -54,8 +60,21 @@ export async function createGitIngestButton(): Promise<HTMLLIElement> {
   `;
   link.innerHTML = linkContent;
 
-  // Add button to container
-  li.appendChild(link);
+  // Create tooltip
+  const tooltip = document.createElement('tool-tip');
+  tooltip.setAttribute('for', 'gitingest_btn');
+  tooltip.id = 'gitingest_tooltip';
+  tooltip.setAttribute('popover', 'manual');
+  tooltip.className = 'position-absolute sr-only';
+  tooltip.setAttribute('role', 'tooltip');
+  tooltip.textContent = tooltipText;
+
+  // Add button and tooltip to container
+  const div = document.createElement('div');
+  div.className = 'float-left';
+  div.appendChild(link);
+  div.appendChild(tooltip);
+  li.appendChild(div);
   li.id = 'git-ingest-button';
 
   return li;
