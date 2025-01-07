@@ -31,9 +31,20 @@ export async function createGitIngestButton(): Promise<HTMLLIElement> {
   const link = document.createElement('a');
   link.className = 'btn-sm btn';
 
-  // Get custom base URL from storage, default to gitingest.com if not set
-  const baseUrl = await storage.getItem<string>('sync:baseUrl') || 'gitingest.com';
-  link.href = window.location.href.replace('github.com', baseUrl);
+  // Get custom base URL and window preference from storage
+  const [baseUrl, openInNewWindow] = await Promise.all([
+    storage.getItem<string>('sync:baseUrl'),
+    storage.getItem<boolean>('sync:openInNewWindow')
+  ]);
+
+  // Set default base URL if not set
+  link.href = window.location.href.replace('github.com', baseUrl || 'gitingest.com');
+  
+  // Set target based on preference
+  if (openInNewWindow) {
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+  }
   
   // Create spans for different screen sizes
   const linkContent = `
@@ -45,7 +56,6 @@ export async function createGitIngestButton(): Promise<HTMLLIElement> {
 
   // Add button to container
   li.appendChild(link);
-
   li.id = 'git-ingest-button';
 
   return li;
@@ -69,7 +79,12 @@ storage.watch('sync:baseUrl', () => {
     const link = button.querySelector('a');
     if (link) {
       createGitIngestButton().then(newButton => {
-        link.href = newButton.querySelector('a')?.href || link.href;
+        const newLink = newButton.querySelector('a');
+        if (newLink) {
+          link.href = newLink.href;
+          link.target = newLink.target;
+          link.rel = newLink.rel;
+        }
       });
     }
   }

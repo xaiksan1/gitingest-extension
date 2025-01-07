@@ -3,6 +3,7 @@ import { storage } from 'wxt/storage';
 
 function App() {
   const [baseUrl, setBaseUrl] = useState<string>('');
+  const [openInNewWindow, setOpenInNewWindow] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
@@ -11,6 +12,9 @@ function App() {
         setBaseUrl(savedUrl);
       }
     });
+    storage.getItem<boolean>('sync:openInNewWindow').then((value) => {
+      setOpenInNewWindow(value ?? false);
+    });
   }, []);
 
   const handleSave = async (e: React.FormEvent) => {
@@ -18,6 +22,11 @@ function App() {
     await storage.setItem('sync:baseUrl', baseUrl);
     setIsSaved(true);
     setTimeout(() => setIsSaved(false), 2500);
+  };
+
+  const handleToggleChange = async (checked: boolean) => {
+    setOpenInNewWindow(checked);
+    await storage.setItem('sync:openInNewWindow', checked);
   };
 
   return (
@@ -62,6 +71,19 @@ function App() {
                 className="border-[3px] w-full relative z-20 border-gray-900 placeholder-gray-500 text-base font-medium focus:outline-none py-2 px-4 rounded"
               />
             </div>
+          </div>
+
+          <div className="space-y-2">
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                checked={openInNewWindow}
+                onChange={(e) => handleToggleChange(e.target.checked)}
+                className="sr-only peer"
+              />
+              <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer border-[3px] border-gray-900 peer-checked:after:translate-x-[19px] rtl:peer-checked:after:-translate-x-[19px] peer-checked:after:border-gray-900 after:content-[''] after:absolute after:top-[1px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#fca847]"></div>
+              <span className="ms-3 text-sm font-bold text-gray-900">Open in New Window</span>
+            </label>
           </div>
           
           <div className="relative w-full group">
